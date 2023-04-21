@@ -2,21 +2,53 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Record = (props) => (
+  <div id="SkateParks">
   <tr>
-    <td>{props.record.name}</td>
-    <td>{props.record.position}</td>
+      <tr>
+      <div class="card-body">
+      <h5 class="p-2 col-12">{props.record.name}</h5>
+          <img src={props.record.imagelink} style={{ borderRadius: `3%`, objectFit: `cover`}} width= "20%" height= "20%" ></img>
+      </div>
+    </tr>
+    <td>{props.record.address.street}<tr>{props.record.address.city}</tr><tr >{props.record.address.state}</tr><tr>{props.record.address.zipcode}</tr></td>
     <td>{props.record.level}</td>
     <td>
-      <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
-      <button className="btn btn-link"
-        onClick={() => {
-          props.deleteRecord(props.record._id);
-        }}
-      >
-        Delete
-      </button>
+      <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Clips</Link>
     </td>
+    <tr>
   </tr>
+  <td>
+  <tr>
+    <td>Monday</td>
+    <td>{props.record.hours.tuesday}</td>
+  </tr>
+  <tr>
+    <td>Tuesday</td>
+    <td>9:00 AM - 5:00 PM</td>
+  </tr>
+  <tr>
+    <td>Wednesday</td>
+    <td>9:00 AM - 5:00 PM</td>
+  </tr>
+  <tr>
+    <td>Thursday</td>
+    <td>9:00 AM - 7:00 PM</td>
+  </tr>
+  <tr>
+    <td>Friday</td>
+    <td>9:00 AM - 7:00 PM</td>
+  </tr>
+  <tr>
+    <td>Saturday</td>
+    <td>10:00 AM - 4:00 PM</td>
+  </tr>
+  <tr>
+    <td>Sunday</td>
+    <td>Closed</td>
+  </tr>
+  </td>
+  </tr>
+  </div>
 );
 
 export default function RecordList() {
@@ -71,12 +103,12 @@ export default function RecordList() {
       <h3>Record List</h3>
       <table className="table table-striped" style={{ marginTop: 20 }}>
         <thead>
-          <tr>
+          {/* <tr>
             <th>Name</th>
             <th>Position</th>
             <th>Level</th>
             <th>Action</th>
-          </tr>
+          </tr> */}
         </thead>
         <tbody>{recordList()}</tbody>
       </table>
