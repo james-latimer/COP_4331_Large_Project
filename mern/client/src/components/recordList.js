@@ -2,52 +2,52 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Record = (props) => (
-  <div id="SkateParks">
-  <tr>
-      <tr>
-      <div class="card-body">
-      <h5 class="p-2 col-12">{props.record.name}</h5>
-          <img src={props.record.imagelink} style={{ borderRadius: `3%`, objectFit: `cover`}} width= "20%" height= "20%" ></img>
+  <div id="SkateParks" >
+      <div style={{display: "inline-block", verticalAlign: "top"}}>
+        <img src={props.record.imagelink} style={{ borderRadius: `3%`, objectFit: `cover`, }} width= "700px" height= "400px" ></img>
       </div>
-    </tr>
-    <td>{props.record.address.street}<tr>{props.record.address.city}</tr><tr >{props.record.address.state}</tr><tr>{props.record.address.zipcode}</tr></td>
-    <td>{props.record.level}</td>
-    <td>
-      <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Clips</Link>
-    </td>
-    <tr>
-  </tr>
-  <td>
-  <tr>
-    <td>Monday</td>
-    <td>{props.record.hours.tuesday}</td>
-  </tr>
-  <tr>
-    <td>Tuesday</td>
-    <td>9:00 AM - 5:00 PM</td>
-  </tr>
-  <tr>
-    <td>Wednesday</td>
-    <td>9:00 AM - 5:00 PM</td>
-  </tr>
-  <tr>
-    <td>Thursday</td>
-    <td>9:00 AM - 7:00 PM</td>
-  </tr>
-  <tr>
-    <td>Friday</td>
-    <td>9:00 AM - 7:00 PM</td>
-  </tr>
-  <tr>
-    <td>Saturday</td>
-    <td>10:00 AM - 4:00 PM</td>
-  </tr>
-  <tr>
-    <td>Sunday</td>
-    <td>Closed</td>
-  </tr>
-  </td>
-  </tr>
+      <div style={{display: "inline-block"}}>
+        <div style={{marginLeft: "200PX"}}>
+          <h4>{props.record.name}</h4>
+        </div >
+        
+        <h6 style={{display: "inline", marginLeft: "200px"}}>Address: </h6>
+        <p style={{display: "inline"}}>
+            {props.record.address.street} {props.record.address.city} {props.record.address.state}&nbsp;
+            {props.record.address.zipcode} {props.record.level}
+        </p>
+        {/* <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Clips</Link> */}
+      <div style={{marginLeft: "200px"}}>
+        <tr>
+          <td>Monday</td>
+          <td>{props.record.hours.tuesday}</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>9:00 AM - 5:00 PM</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>9:00 AM - 5:00 PM</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td>9:00 AM - 7:00 PM</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>9:00 AM - 7:00 PM</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>10:00 AM - 4:00 PM</td>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td>Closed</td>
+        </tr>
+      </div>
+    </div>
   </div>
 );
 
@@ -73,6 +73,7 @@ export default function RecordList() {
 
     return; 
   }, [records.length]);
+
 
   // This method will delete a record
   async function deleteRecord(id) {
@@ -100,7 +101,8 @@ export default function RecordList() {
   // This following section will display the table with the records of individuals.
   return (
     <div>
-      <h3>Record List</h3>
+      <h2 style={{textAlign: "center", color: "white"}}>Skate Park Flexin</h2>
+      <div style={{backgroundColor: "#579390", marginTop: "50px", paddingRight: "0px", marginRight: "0px"}}>
       <table className="table table-striped" style={{ marginTop: 20 }}>
         <thead>
           {/* <tr>
@@ -112,6 +114,7 @@ export default function RecordList() {
         </thead>
         <tbody>{recordList()}</tbody>
       </table>
+      </div>
     </div>
   );
 }
